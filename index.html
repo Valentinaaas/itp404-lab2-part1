@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Client-side Templating</title>
+  <style>
+    body {
+      background-color: lightgrey;
+    }
+    h3 {
+
+    }
+    .restaurant-div {
+      background-color: white;
+      padding: 20px;
+      margin: 20px;
+      width: 250px;
+    }
+  </style>
+</head>
+<body>
+
+<template id="restaurant-template">
+  {{#each restaurants}}
+    <div class="restaurant-div">
+      <h3>{{this.name}}</h3>
+      <p>Location: {{location}}</p>
+      <p>Owners:
+        {{#each ownedBy}}
+          <ul>
+            <li>{{this}}</li>
+          </ul>
+        {{/each}}
+      </p>
+      <p><a href="{{yelpPage}}" target="_blank">Check us out on Yelp</a></p>
+      {{#if acceptsApplePay}}
+        <p><img src="apple-icon.jpg" alt="apple icon" width="50px"></p>
+      {{else}}
+        <p>No Apple Pay</p>
+      {{/if}}
+    </div>
+  {{/each}}
+</template>
+
+<div id="loading">
+  Loading...
+</div>
+
+<script src="jquery-3.3.1.js"></script>
+<script src="handlebars-v4.0.11.js"></script>
+<script src="main.js"></script>
+<!-- <script src="if I were to add moment"></script> -->
+
+
+</body>
+</html>
